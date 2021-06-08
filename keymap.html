@@ -170,10 +170,10 @@
 <h2 id="normal-mode"><a class="header" href="#normal-mode">Normal mode</a></h2>
 <h3 id="movement"><a class="header" href="#movement">Movement</a></h3>
 <table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
-<tr><td>h</td><td>move left</td></tr>
-<tr><td>j</td><td>move down</td></tr>
-<tr><td>k</td><td>move up</td></tr>
-<tr><td>l</td><td>move right</td></tr>
+<tr><td>h, Left</td><td>move left</td></tr>
+<tr><td>j, Down</td><td>move down</td></tr>
+<tr><td>k, Up</td><td>move up</td></tr>
+<tr><td>l, Right</td><td>move right</td></tr>
 <tr><td>w</td><td>move next word start</td></tr>
 <tr><td>b</td><td>move previous word start</td></tr>
 <tr><td>e</td><td>move next word end</td></tr>
@@ -181,26 +181,27 @@
 <tr><td>f</td><td>find next char</td></tr>
 <tr><td>T</td><td>find 'till previous char</td></tr>
 <tr><td>F</td><td>find previous char</td></tr>
-<tr><td>^</td><td>move to the start of the line</td></tr>
-<tr><td>$</td><td>move to the end of the line</td></tr>
+<tr><td>Home</td><td>move to the start of the line</td></tr>
+<tr><td>End</td><td>move to the end of the line</td></tr>
 <tr><td>m</td><td>Jump to matching bracket</td></tr>
 <tr><td>PageUp</td><td>Move page up</td></tr>
 <tr><td>PageDown</td><td>Move page down</td></tr>
 <tr><td>ctrl-u</td><td>Move half page up</td></tr>
 <tr><td>ctrl-d</td><td>Move half page down</td></tr>
-<tr><td>Tab</td><td>Switch to next view</td></tr>
 <tr><td>ctrl-i</td><td>Jump forward on the jumplist TODO: conflicts tab</td></tr>
 <tr><td>ctrl-o</td><td>Jump backward on the jumplist</td></tr>
 <tr><td>v</td><td>Enter select (extend) mode</td></tr>
 <tr><td>g</td><td>Enter goto mode</td></tr>
 <tr><td>:</td><td>Enter command mode</td></tr>
 <tr><td>z</td><td>Enter view mode</td></tr>
+<tr><td>ctrl-w</td><td>Enter window mode (maybe will be remove for spc w w later)</td></tr>
 <tr><td>space</td><td>Enter space mode</td></tr>
 <tr><td>K</td><td>Show documentation for the item under the cursor</td></tr>
 </tbody></table>
 <h3 id="changes"><a class="header" href="#changes">Changes</a></h3>
 <table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
-<tr><td>r</td><td>replace (single character change)</td></tr>
+<tr><td>r</td><td>replace with a character</td></tr>
+<tr><td>R</td><td>replace with yanked text</td></tr>
 <tr><td>i</td><td>Insert before selection</td></tr>
 <tr><td>a</td><td>Insert after selection (append)</td></tr>
 <tr><td>I</td><td>Insert at the start of the line</td></tr>
@@ -245,6 +246,17 @@ in reverse, or searching via smartcase.</p>
 <tr><td>N</td><td>Add next search match to selection</td></tr>
 <tr><td>*</td><td>Use current selection as the search pattern</td></tr>
 </tbody></table>
+<h3 id="diagnostics"><a class="header" href="#diagnostics">Diagnostics</a></h3>
+<blockquote>
+<p>NOTE: <code>[</code> and <code>]</code> will likely contain more pair mappings in the style of
+<a href="https://github.com/tpope/vim-unimpaired">vim-unimpaired</a></p>
+</blockquote>
+<table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
+<tr><td>[d</td><td>Go to previous diagnostic</td></tr>
+<tr><td>]d</td><td>Go to next diagnostic</td></tr>
+<tr><td>[D</td><td>Go to first diagnostic in document</td></tr>
+<tr><td>]D</td><td>Go to last diagnostic in document</td></tr>
+</tbody></table>
 <h2 id="select--extend-mode"><a class="header" href="#select--extend-mode">Select / extend mode</a></h2>
 <p>I'm still pondering whether to keep this mode or not. It changes movement
 commands to extend the existing selection instead of replacing it.</p>
@@ -271,21 +283,33 @@ the selection.</p>
 <table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
 <tr><td>g</td><td>Go to the start of the file</td></tr>
 <tr><td>e</td><td>Go to the end of the file</td></tr>
+<tr><td>h</td><td>Go to the start of the line</td></tr>
+<tr><td>l</td><td>Go to the end of the line</td></tr>
+<tr><td>s</td><td>Go to first non-whitespace character of the line</td></tr>
+<tr><td>t</td><td>Go to the top of the screen</td></tr>
+<tr><td>m</td><td>Go to the middle of the screen</td></tr>
+<tr><td>b</td><td>Go to the bottom of the screen</td></tr>
 <tr><td>d</td><td>Go to definition</td></tr>
-<tr><td>t</td><td>Go to type definition</td></tr>
+<tr><td>y</td><td>Go to type definition</td></tr>
 <tr><td>r</td><td>Go to references</td></tr>
 <tr><td>i</td><td>Go to implementation</td></tr>
 </tbody></table>
 <h2 id="object-mode"><a class="header" href="#object-mode">Object mode</a></h2>
 <p>TODO: Mappings for selecting syntax nodes (a superset of <code>[</code>).</p>
+<h2 id="window-mode"><a class="header" href="#window-mode">Window mode</a></h2>
+<p>This layer is similar to vim keybindings as kakoune does not support window.</p>
+<table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
+<tr><td>w, ctrl-w</td><td>Switch to next window</td></tr>
+<tr><td>v, ctrl-v</td><td>Vertical right split</td></tr>
+<tr><td>h, ctrl-h</td><td>Horizontal bottom split</td></tr>
+<tr><td>q, ctrl-q</td><td>Close current window</td></tr>
+</tbody></table>
 <h2 id="space-mode"><a class="header" href="#space-mode">Space mode</a></h2>
 <p>This layer is a kludge of mappings I had under leader key in neovim.</p>
 <table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
 <tr><td>f</td><td>Open file picker</td></tr>
 <tr><td>b</td><td>Open buffer picker</td></tr>
-<tr><td>v</td><td>Open a new vertical split into the current file</td></tr>
-<tr><td>w</td><td>Save changes to file</td></tr>
-<tr><td>c</td><td>Close the current split</td></tr>
+<tr><td>w</td><td>Enter window mode</td></tr>
 <tr><td>space</td><td>Keep primary selection TODO: it's here because space mode replaced it</td></tr>
 </tbody></table>
 
